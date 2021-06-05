@@ -1,2 +1,47 @@
 "use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+function Auto_Bind(_, __, methodDescriptor) {
+    let originalMethod = methodDescriptor.value;
+    return {
+        configurable: methodDescriptor.configurable,
+        enumerable: methodDescriptor.enumerable,
+        get() {
+            return originalMethod.bind(this);
+        },
+    };
+}
+class ProjectInput {
+    constructor() {
+        this.templateElement = document.getElementById("project-input");
+        this.rootDiv = document.getElementById("app");
+        const importedNode = this.templateElement.content;
+        this.childForm = importedNode.firstElementChild;
+        this.childForm.id = "user-input";
+        this.titleInputELement = this.childForm.querySelector("#title");
+        this.descriptionInputELement = this.childForm.querySelector("#description");
+        this.peopleInputELement = this.childForm.querySelector("#people");
+        this.submitButton = this.childForm.querySelector("button");
+        this.configure();
+        this.attachForm();
+    }
+    _submitHandler(e) {
+        e.preventDefault();
+        console.log(this.titleInputELement.value);
+    }
+    configure() {
+        this.childForm.addEventListener("click", this._submitHandler);
+    }
+    attachForm() {
+        this.rootDiv.insertAdjacentElement("afterbegin", this.childForm);
+    }
+}
+__decorate([
+    Auto_Bind
+], ProjectInput.prototype, "_submitHandler", null);
+const inpt = new ProjectInput();
 //# sourceMappingURL=app.js.map
