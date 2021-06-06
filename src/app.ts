@@ -1,3 +1,34 @@
+interface validatable {
+	value: string | number;
+	required?: boolean;
+	minLen?: number;
+	maxLen?: number;
+	min?: number;
+	max?: number;
+}
+
+function validator(validatableInp: validatable): boolean {
+	if (validatableInp.required) {
+		if (validatableInp.value.toString().trim().length === 0) return false;
+		if (validatableInp.value.toString().trim().length === 0) return false;
+	}
+	if (validatableInp.minLen) {
+		if (validatableInp.value.toString().trim().length < validatableInp.minLen)
+			return false;
+	}
+	if (validatableInp.maxLen) {
+		if (validatableInp.value.toString().trim().length > validatableInp.maxLen)
+			return false;
+	}
+	if (validatableInp.min) {
+		if (validatableInp.value < validatableInp.min) return false;
+	}
+	if (validatableInp.max) {
+		if (validatableInp.value > validatableInp.max) return false;
+	}
+	return true;
+}
+
 function Auto_Bind(
 	_: any,
 	__: string,
@@ -48,14 +79,59 @@ class ProjectInput {
 		this.attachForm();
 	}
 
+	private gatherUserInput(): [string, string, number] | void {
+		let enteredTitle = this.titleInputELement.value;
+		let enteredDescription = this.descriptionInputELement.value;
+		let enteredPeople = this.peopleInputELement.value;
+
+		const titleValidatble: validatable = {
+			value: enteredTitle,
+			required: true,
+		};
+
+		const descValidatable: validatable = {
+			value: enteredDescription,
+			required: true,
+			minLen: 5,
+		};
+
+		const peopleValidatable: validatable = {
+			value: enteredPeople,
+			required: true,
+			min: 1,
+			max: 7,
+		};
+
+		if (
+			!validator(titleValidatble) ||
+			!validator(descValidatable) ||
+			!validator(peopleValidatable)
+		) {
+			alert("Invalid input, please try again");
+			return;
+		}
+		return [enteredTitle, enteredDescription, +enteredPeople];
+	}
+
+	private clearInput() {
+		this.titleInputELement.value = "";
+		this.descriptionInputELement.value = "";
+		this.peopleInputELement.value = "";
+	}
+
 	@Auto_Bind
 	private _submitHandler(e: Event) {
 		e.preventDefault();
-		console.log(this.titleInputELement.value);
+		const userInput = this.gatherUserInput();
+		if (Array.isArray(userInput)) {
+			const [title, desc, people] = userInput;
+			console.log(title, desc, people);
+		}
+		this.clearInput();
 	}
 
 	private configure() {
-		this.childForm.addEventListener("click", this._submitHandler);
+		this.childForm.addEventListener("submit", this._submitHandler);
 	}
 
 	private attachForm() {
