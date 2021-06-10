@@ -1,10 +1,6 @@
-/// <reference path="ComponentClasses/projectInput.ts" />
-/// <reference path="ComponentClasses/projectList.ts" />
+import { ProjectInput } from "./ComponentClasses/projectInput.js";
+import { ProjectList } from "./ComponentClasses/projectList.js";
 
-// functions an decorators section
-
-namespace Interfaces {
-	new ProjectInput();
-	new ProjectList("active");
-	new ProjectList("finished");
-}
+new ProjectInput();
+new ProjectList("active");
+new ProjectList("finished");
