@@ -1,3 +1,5 @@
+/// <reference path="../Interfaces/project-class-enum.ts" />
+
 namespace Interfaces {
 	type Listener<T> = (items: T[]) => void;
 	abstract class State<T> {
