@@ -1,5 +1,5 @@
-import { Project } from "../Interfaces/project-class-enum.js";
-import { Status } from "../Interfaces/project-class-enum.js";
+import { Project } from "../Interfaces/project-class-enum";
+import { Status } from "../Interfaces/project-class-enum";
 
 type Listener<T> = (items: T[]) => void;
 abstract class State<T> {

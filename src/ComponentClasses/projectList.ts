@@ -1,9 +1,9 @@
-import { Auto_Bind } from "../decorators/autobind.js";
-import { DargTarget } from "../Interfaces/dragAndDrop.js";
-import { Project, Status } from "../Interfaces/project-class-enum.js";
-import { projectInstance } from "../state/project-state.js";
-import { ComponentBase } from "./baseComponent.js";
-import { ProjectItem } from "./projectItem.js";
+import { Auto_Bind } from "../decorators/autobind";
+import { DargTarget } from "../Interfaces/dragAndDrop";
+import { Project, Status } from "../Interfaces/project-class-enum";
+import { projectInstance } from "../state/project-state";
+import { ComponentBase } from "./baseComponent";
+import { ProjectItem } from "./projectItem";
 
 export class ProjectList
 	extends ComponentBase<HTMLDivElement, HTMLElement>

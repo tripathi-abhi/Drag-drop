@@ -13,7 +13,14 @@
 	],
 	"author": "Abhishek",
 	"license": "ISC",
-	"dependencies": {
-		"lite-server": "^2.6.1"
+	"dependencies": {},
+	"devDependencies": {
+		"@webpack-cli/generators": "^2.2.0",
+		"lite-server": "^2.6.1",
+		"ts-loader": "^9.2.3",
+		"typescript": "^4.3.3",
+		"webpack": "^5.39.1",
+		"webpack-cli": "^4.7.2",
+		"webpack-dev-server": "^3.11.2"
 	}
 }

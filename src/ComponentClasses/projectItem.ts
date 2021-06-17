@@ -1,7 +1,7 @@
-import { Auto_Bind } from "../decorators/autobind.js";
-import { Draggable } from "../Interfaces/dragAndDrop.js";
-import { Project } from "../Interfaces/project-class-enum.js";
-import { ComponentBase } from "./baseComponent.js";
+import { Auto_Bind } from "../decorators/autobind";
+import { Draggable } from "../Interfaces/dragAndDrop";
+import { Project } from "../Interfaces/project-class-enum";
+import { ComponentBase } from "./baseComponent";
 
 export class ProjectItem
 	extends ComponentBase<HTMLUListElement, HTMLLIElement>
